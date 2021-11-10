@@ -10,8 +10,9 @@ mongoose.connect(DB_LINK).then(function () {
 
 const userSchema = new mongoose.Schema({
 
-    userName: {
+    name: {
         type: String,
+        // required: true,
         min: 6
     },
 
@@ -38,9 +39,13 @@ const userSchema = new mongoose.Schema({
         }
     },
 
-    region:{
-        type:String,
+    region: {
+        type: String
     },
+
+    token: {
+        type: String,
+    }
 
 })
 

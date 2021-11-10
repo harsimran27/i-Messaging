@@ -1,15 +1,15 @@
-let express = require("express");
+const express = require("express");
 const userModel = require("../model/userModel");
-let { bodyChecker } = require("../util_funct");
 let userRouter = express.Router();
-const { createElement,
-    getElement, deleteElement,
-    updateElement } = require("../helper/factory");
+const { createElement, getElement, deleteElement, updateElement } = require("../helper/factory");
+const { bodyChecker, protectRoute } = require("../util_funct");
 
 let createUser = createElement(userModel);
 let getUser = getElement(userModel);
-let deleteUser = deleteElement(userModel);
 let updateUser = updateElement(userModel);
+let deleteUser = deleteElement(userModel);
+
+userRouter.use(protectRoute);
 
 userRouter
     .route("/:id")
@@ -19,7 +19,6 @@ userRouter
 
 userRouter
     .route("/")
-    .get(getUser)
     .post(bodyChecker, createUser);
 
 module.exports = userRouter;
