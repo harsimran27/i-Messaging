@@ -7,6 +7,12 @@ import { Avatar } from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings";
 
 const Sidebar = () => {
+  const handleAddChannel = (e) => {
+    e.preventDefault();
+
+    const channelName = prompt("Enter a new channel name");
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar_top">
@@ -21,7 +27,7 @@ const Sidebar = () => {
             <h4>Channels</h4>
           </div>
 
-          <AddIcon className="sidebar_addChannel" />
+          <AddIcon onClick={handleAddChannel} className="sidebar_addChannel" />
         </div>
       </div>
 
